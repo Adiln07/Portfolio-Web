@@ -1,12 +1,11 @@
 import React from "react";
 
-const UserPage = () => {
+const UserProject = () => {
   return (
     <div className="bg-red-200 w-2/2 h-full flex items-center justify-center text-2xl font-semibold">
-      {" "}
-      UserPage
+      UserProject gan
     </div>
   );
 };
 
-export default UserPage;
+export default UserProject;
