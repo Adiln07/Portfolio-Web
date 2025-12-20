@@ -2,9 +2,9 @@ import React from "react";
 
 const UserPage = () => {
   return (
-    <div className="bg-red-200 w-2/2 h-full flex items-center justify-center text-2xl font-semibold">
+    <div className="bg-red-200 w-2/2 h-full flex  items-center justify-center text-2xl ">
       {" "}
-      UserPage
+      <p className="roboto-font font-bold ">Roboto Font</p>
     </div>
   );
 };
