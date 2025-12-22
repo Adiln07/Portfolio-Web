@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Roboto, Kanit } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import { Footer } from "./_components/Footer";
+
+import { getSetting } from "./queries/getSettings";
+import { Header } from "./_components/Header";
 
 const fontRoboto = Roboto({
   variable: "--font-roboto",
@@ -12,18 +15,8 @@ const fontKanit = Kanit({
   variable: "--font-kanit",
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"], // opsional tapi aman
+  style: ["normal", "italic"],
 });
-
-type Setting = {
-  siteName: string;
-};
-
-async function getSetting(): Promise<Setting> {
-  const data = await fetch("http://localhost:3001/settings");
-  const setting = await data.json();
-  return setting;
-}
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -37,25 +30,15 @@ export default async function RootLayout({
 }>) {
   const getSettingData = await getSetting();
 
-  console.log("Setting Data:", getSettingData);
   return (
     <html lang="en">
+      <Header />
       <body
         className={`${fontRoboto.variable} ${fontKanit.variable} antialiased`}
       >
-        <header className="border-b border-black py-1">
-          <h1 className="text-center py-2 font-semibold text-2xl kanit-font">
-            {getSettingData.siteName}
-          </h1>
-          <nav className="flex gap-10 text-xl justify-center">
-            <Link href="/">Home</Link>
-            <Link href="/about">About</Link>
-            <Link href="/admin">Admin</Link>
-            <Link href="/products">products</Link>
-            <Link href="/user">user</Link>
-          </nav>
-        </header>
         {children}
+
+        <Footer />
       </body>
     </html>
   );

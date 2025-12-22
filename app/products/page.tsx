@@ -1,13 +1,6 @@
 import React from "react";
-import { Product } from "@/app/types/Product";
+import { GetProducts } from "../queries/getProducts";
 import Link from "next/link";
-
-async function GetProducts(): Promise<Product[]> {
-  const data = await fetch("http://localhost:3001/post");
-  const products = await data.json();
-
-  return products;
-}
 
 const Products = async () => {
   const products = await GetProducts();

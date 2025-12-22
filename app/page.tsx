@@ -1,4 +1,4 @@
-import Counting from "./components/Counting";
+import Counting from "./_components/Counting";
 
 export default function Home() {
   return (
